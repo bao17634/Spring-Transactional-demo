@@ -1,0 +1,20 @@
+
+# 开发环境配置
+server:
+  # 服务端口
+  port: 8082
+
+
+
+
+# spring 配置
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: bao026099
+    url: jdbc:postgresql://127.0.0.1:5432/db_test
+
+# 日志
+logging:
+  config: classpath:log4j2.xml
