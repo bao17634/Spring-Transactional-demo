@@ -88,7 +88,6 @@ public class UserServiceImpl implements UserService {
       log.debug("更新前 用户信息 user：{}",mUser);
       mUser.setName(userInfo.getName());
       mUser.setPwd(userInfo.getPwd());
-
       Account account = accountMapper.findAccountByUserId(mUser.getId());
       account.setInfo(userInfo.getAccount().getInfo());
       int resultUpdateAccount = accountService.updateAccount1(account,TwoFlag);

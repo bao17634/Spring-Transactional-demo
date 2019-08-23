@@ -37,8 +37,14 @@ public class TransactionalServiceImpl implements TransactionalService {
     @Autowired
     private UOrderMapper uOrderMapper;
 
+    /**
+     * REQUIRES_NEW 被已有事务的方法调用，会重新开启一个事务
+     * @param userInfo
+     * @return
+     * @throws Exception
+     */
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
+    @Transactional(propagation = Propagation.REQUIRES_NEW,rollbackFor = Exception.class)
     public Integer saveUserInfo(UserInfo userInfo) throws Exception {
       Integer userCount=0;
       Account account=new Account();
@@ -66,9 +72,15 @@ public class TransactionalServiceImpl implements TransactionalService {
     }
     }
 
+    /**
+     * 被事务方法调用，会起一个新的子事务并设置savepoint（数据库设置子事务）, 在方法已提交，但是调用端事务回滚时，本方法也会回滚
+     * @param uOrder
+     * @return
+     * @throws RuntimeException
+     */
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,rollbackFor = RuntimeException.class)
-    public Integer saveOrder(UOrder uOrder) throws RuntimeException{
+    @Transactional(rollbackFor = RuntimeException.class)
+    public Integer saveOrder(UOrder uOrder) throws Exception{
         Integer orderCount=0;
         Integer conut=0;
         Account account=new Account();
@@ -77,6 +89,15 @@ public class TransactionalServiceImpl implements TransactionalService {
             if(mUser == null){
                 return 0;
             }
+            UserInfo userInfo =new UserInfo();
+            userInfo.setId(1);
+            userInfo.setAccount(null);
+            userInfo.setName("2");
+            userInfo.setAddress("四川成都");
+            userInfo.setPwd("123456hhh");
+            userInfo.setPhone("12345erere67");
+            userInfo.setOrderList(null);
+            this.saveUserInfo(userInfo);// 测试代码无意义
             log.debug("运单原数据：{}",uOrder);
             orderCount=uOrderMapper.insert(uOrder);
             //添加账单信息
@@ -85,10 +106,17 @@ public class TransactionalServiceImpl implements TransactionalService {
             account.setUserId(uOrder.getUserId());
             conut=accountMapper.insert(account);
             return orderCount+conut;
-        }catch (RuntimeException e){
-            throw new RuntimeException("添加运单失败！",e);
+        }catch (Exception e){
+            throw new Exception("添加运单失败！",e);
         }
     }
+
+    /**
+     *  更新用户信息 事务管理  声明式事务，默认传播属性为 REQUIRED ，捕获的异常为 RuntimeException，Error
+     * @param product
+     * @return
+     * @throws RuntimeException
+     */
     @Override
     public Integer saveProduct(Product product) throws RuntimeException {
         Integer productCount =0;
@@ -106,8 +134,14 @@ public class TransactionalServiceImpl implements TransactionalService {
         }
     }
 
+    /**
+     * 方法抛出异常 被调用端开启子事务方法也会回滚
+     * @param userInfo
+     * @return
+     * @throws RuntimeException
+     */
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS,rollbackFor = RuntimeException.class)
+    @Transactional(rollbackFor = RuntimeException.class)
     public Integer updateUserInfo(UserInfo userInfo)throws RuntimeException{
         Integer userCount=0;
         try {
@@ -129,6 +163,12 @@ public class TransactionalServiceImpl implements TransactionalService {
         return null;
     }
 
+    /**
+     * 如果没有，就以非事务方式执行；如果有，就使用当前事务。
+     * @param uOrder
+     * @return
+     * @throws RuntimeException
+     */
     @Override
     @Transactional(propagation = Propagation.SUPPORTS,rollbackFor = RuntimeException.class)
     public Integer updateOrder(UOrder uOrder) throws RuntimeException {
