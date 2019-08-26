@@ -202,7 +202,7 @@ public class UserServiceImpl implements UserService {
   }
 
   /**
-   * 方法抛出异常 被调用端开启子事务方法也会回滚
+   * 被事务方法调用，会起一个新的子事务并设置savepoint（数据库设置子事务）, 在方法已提交，但是调用端事务回滚时，本方法也会回滚
    * @param userInfo
    * @return
    * @throws Exception

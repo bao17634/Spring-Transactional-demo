@@ -16,31 +16,33 @@ import com.example.mybatis.demo.params.UserParams;
 public interface TransactionalService {
     /**
      *  添加用户信息
-     * @param userInfo
+     * @param userInf
+     * @param oneThrow
+     * @param twoThrow
      * @return
      */
-    Integer saveUserInfo(UserInfo userInfo) throws Exception;
+    boolean saveUserInfo(UserInfo userInf,boolean oneThrow,boolean twoThrow) throws Exception;
 
     /**
      * 添加订单
      * @param uOrder
      * @return
      */
-    Integer saveOrder(UOrder uOrder) throws Exception;
+    boolean saveOrder(UOrder uOrder,boolean oneThrow,boolean twoThrow) throws Exception;
 
     /**
      * 添加商品信息
      * @param product
      * @return
      */
-    Integer saveProduct(Product product);
+    boolean saveProduct(Product product,boolean oneThrow,boolean twoThrow);
 
     /**
      * 更新用户信息
      * @param userInfo
      * @return
      */
-    Integer updateUserInfo(UserInfo userInfo);
+    boolean updateUserInfo(UserInfo userInfo,boolean oneThrow,boolean twoThrow);
 
     /**
      * 更新商品信息
