@@ -1,17 +1,14 @@
 package com.example;
 
-import com.example.mybatis.demo.domain.Product;
-import com.example.mybatis.demo.domain.UOrder;
-import com.example.mybatis.demo.dto.UserInfo;
+import com.example.byr.demo.domain.Product;
+import com.example.byr.demo.domain.UOrder;
+import com.example.byr.demo.dto.UserInfo;
 import com.example.service.TransactionalService;
-import org.apache.tomcat.jni.Error;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.math.BigDecimal;
 

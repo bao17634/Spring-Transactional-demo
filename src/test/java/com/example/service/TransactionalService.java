@@ -1,10 +1,8 @@
 package com.example.service;
 
-import com.example.mybatis.demo.domain.MUser;
-import com.example.mybatis.demo.domain.Product;
-import com.example.mybatis.demo.domain.UOrder;
-import com.example.mybatis.demo.dto.UserInfo;
-import com.example.mybatis.demo.params.UserParams;
+import com.example.byr.demo.domain.Product;
+import com.example.byr.demo.domain.UOrder;
+import com.example.byr.demo.dto.UserInfo;
 
 /**
  * @ClassName: TransactionalService

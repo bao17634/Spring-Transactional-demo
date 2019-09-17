@@ -11,14 +11,14 @@
 	<jdbcConnection driverClass="org.postgresql.Driver"
 			connectionURL="jdbc:postgresql://59.110.161.8:5432/mybatis_example" userId="postgres" password="waylon1994,." />
       <!-- java模型创建器 -->
-    <javaModelGenerator targetPackage="com.example.mybatis.demo.domain" targetProject="./src/main/java">
+    <javaModelGenerator targetPackage="com.example.byr.demo.domain" targetProject="./src/main/java">
       <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
       <property name="enableSubPackages" value="true" />
       <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
       <!--mapper dao层配置-->
-    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.example.mybatis.demo.mapper"  targetProject="./src/main/java">
+    <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.example.byr.demo.mapper" targetProject="./src/main/java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
       <!--数据库表-->

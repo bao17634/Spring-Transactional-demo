@@ -26,7 +26,7 @@
         </Root>
         <!-- For application define -->
 
-        <logger level="debug" name="com.example.mybatis.demo" >
+        <logger level="debug" name="com.example.byr.demo" >
             <AppenderRef ref="appLog" />
             <AppenderRef ref="Console" />
         </logger>

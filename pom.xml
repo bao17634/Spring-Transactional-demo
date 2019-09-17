@@ -57,14 +57,14 @@
       <version>RELEASE</version>
     </dependency>
 
-    <!--mybatis-->
+    <!--byr-->
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
       <version>RELEASE</version>
     </dependency>
 
-  <!--mybatis-generator-core 代码生成器-->
+  <!--byr-generator-core 代码生成器-->
     <dependency>
       <groupId>org.mybatis.generator</groupId>
       <artifactId>mybatis-generator-core</artifactId>

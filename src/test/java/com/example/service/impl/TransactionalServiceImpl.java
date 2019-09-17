@@ -1,15 +1,14 @@
 package com.example.service.impl;
 
-import com.example.mybatis.demo.domain.Account;
-import com.example.mybatis.demo.domain.MUser;
-import com.example.mybatis.demo.domain.Product;
-import com.example.mybatis.demo.domain.UOrder;
-import com.example.mybatis.demo.dto.UserInfo;
-import com.example.mybatis.demo.mapper.AccountMapper;
-import com.example.mybatis.demo.mapper.MUserMapper;
-import com.example.mybatis.demo.mapper.ProductMapper;
-import com.example.mybatis.demo.mapper.UOrderMapper;
-import com.example.mybatis.demo.params.UserParams;
+import com.example.byr.demo.domain.Account;
+import com.example.byr.demo.domain.MUser;
+import com.example.byr.demo.domain.Product;
+import com.example.byr.demo.domain.UOrder;
+import com.example.byr.demo.dto.UserInfo;
+import com.example.byr.demo.mapper.AccountMapper;
+import com.example.byr.demo.mapper.MUserMapper;
+import com.example.byr.demo.mapper.ProductMapper;
+import com.example.byr.demo.mapper.UOrderMapper;
 import com.example.service.TransactionalService;
 import com.example.service.TransactionalService1;
 import lombok.extern.log4j.Log4j2;
